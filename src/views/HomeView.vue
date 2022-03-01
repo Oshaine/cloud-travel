@@ -2,7 +2,7 @@
   <div>
     <search-bar :load="load" />
     <div class="filter-wrapper">
-      <search-filter :items="outlets.length" :loading="!loading" />
+      <search-filter :items="outlets.length" :loading="showMap" />
     </div>
     <div class="main-wrap">
       <v-row>
@@ -14,7 +14,12 @@
           <div class="properties">
             <placeholder-loading :loading="loading" />
             <div v-if="outlets !== null && outlets.length >= 1">
-              <v-card min-height="230" v-for="item in outlets" :key="item.id">
+              <v-card
+                elevation="0"
+                min-height="230"
+                v-for="item in outlets"
+                :key="item.id"
+              >
                 <v-hover v-slot="{ hover }">
                   <v-row>
                     <v-col cols="12" md="3">
@@ -158,7 +163,7 @@
               <p class="text">Back to top</p>
             </v-col>
             <v-col cols="10">
-              <div class="d-flex justify-content-end">
+              <div class="d-flex flex-wrap justify-content-end">
                 <p class="text">Showing Results 1 – 20 of 9999</p>
 
                 <div class="text-center">
@@ -201,6 +206,7 @@ export default {
       gallery: [],
       page: 1,
       loading: false,
+      showMap: false,
       policies: ["Breakfast", "Free cancellation", "Pay later", "Pay at hotel"],
       statusCode: "",
     };
@@ -214,24 +220,26 @@ export default {
       this.outlets = [];
       var search =
         this.$store.state.search !== null ? this.$store.state.search : "sgsg";
-      console.log(search);
       try {
-        let res = await this.$axios.get(
+        const res = await this.$axios.get(
           `http://localhost:8080/job01/search/${search}`
         );
         if (res.status === 200) {
           this.outlets = res.data.outlets.availability.results;
           this.statusCode = res.status;
           this.loading = false;
+          this.outlets.length > 0
+            ? (this.showMap = true)
+            : (this.showMap = false);
         }
       } catch (error) {
         console.error(error.response);
         this.statusCode = error.response.status;
         this.loading = false;
+        this.showMap = false;
       }
 
       console.log(this.outlets);
-      // this.getGallery();
     },
     getGallery() {
       this.outlets.map((item) => {

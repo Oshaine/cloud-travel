@@ -2,7 +2,7 @@
 :root {
   --primary-color: #002d63;
   --secondary-color: #00a1e5;
-  --light-grey: #F5F5F5;
+  --light-grey: #f5f5f5;
 }
 html,
 body {
@@ -16,7 +16,7 @@ main {
   background-color: var(--light-grey);
 }
 /* Navbar */
-.v-btn__content{
+.nav-bar .v-btn__content {
   text-transform: none !important;
   font-size: 16px;
   font-weight: 400;
@@ -28,17 +28,15 @@ main {
   min-height: 70px;
   background-color: var(--primary-color);
   /* position: fixed; */
-  
+
   z-index: 1;
-  
 }
 .search-box .v-input {
   min-width: 470px !important;
   /* position: relative; */
   top: 10px;
-
 }
-.search-box .v-input__slot{
+.search-box .v-input__slot {
   margin: 0;
 }
 .search-wrapper > .search-bar {
@@ -60,7 +58,6 @@ main {
   border-radius: 3px;
   margin-left: 20px;
   position: relative;
-
 }
 .date-picker p {
   padding: 10px;
@@ -77,7 +74,7 @@ main {
   font-size: 20px;
 }
 .search-btn {
-  min-width:150px !important;
+  min-width: 150px !important;
   height: 50px !important;
   margin-left: 20px;
   background-color: var(--secondary-color) !important;
@@ -86,7 +83,7 @@ main {
   /* top: -5px; */
 }
 /* Search Filter */
-.filter-wrapper{
+.filter-wrapper {
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -98,6 +95,10 @@ main {
   line-height: 20px;
   margin-bottom: 30px;
 }
+.v-menu__content .filter-btns{
+  min-width: 226px !important;
+  height: 44px !important;
+}
 .filter-btns {
   margin-right: 4px;
   margin-bottom: 4px;
@@ -108,7 +109,6 @@ main {
   background-color: #ffffff !important;
 }
 
-
 .v-btn--active {
   /* color: #ffff !important; */
   background-color: var(--primary-color) !important;
@@ -116,10 +116,14 @@ main {
 }
 .map {
   position: relative;
+  background-color: #fff;
+  /* width: 290px; */
+  height: 100px;
+  border-radius: 5px;
 }
 .map img {
   display: block;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100px;
 }
@@ -127,10 +131,11 @@ main {
   background: var(--primary-color) !important;
   color: #ffff !important;
   text-transform: none;
+  position: relative;
 }
 .map .btn-wrapper {
   position: relative;
-  top: -70px;
+  top: 30px;
   text-align: center;
 }
 .filter-container {
@@ -178,7 +183,7 @@ main {
   margin-left: 2px;
   margin-right: 2px;
 }
-.per-night small{
+.per-night small {
   font-size: 12px;
 }
 .reviews .v-input--selection-controls {
@@ -204,6 +209,12 @@ main {
 .properties .v-card {
   padding: 0 10px 0 10px !important;
   margin-bottom: 20px;
+}
+.properties .v-card:hover {
+  padding: 0 10px 0 10px !important;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+  transition: 0.3s;
 }
 
 .properties .v-card__title {
@@ -240,7 +251,7 @@ main {
   position: relative;
   top: -20px;
 }
-.properties .status{
+.properties .status {
   position: relative;
   top: -25px;
 }
@@ -263,7 +274,7 @@ main {
 .properties .price .v-btn {
   color: #fff;
   border-radius: 0;
-  text-align:right;
+  text-align: right;
 }
 
 .properties .price h2 {
@@ -272,13 +283,13 @@ main {
   text-align: left;
   line-height: 30.12px;
 }
-.properties .price .nightly-avg{
+.properties .price .nightly-avg {
   text-align: right;
   font-size: 12px;
-line-height: 16px;
-margin-top: 5px;
+  line-height: 16px;
+  margin-top: 5px;
 }
-.properties .price .original-price{
+.properties .price .original-price {
   font-size: 12px;
   font-size: 12px;
   line-height: 20px;
@@ -288,18 +299,18 @@ margin-top: 5px;
   right: 5px;
   text-decoration: line-through;
 }
-.no-results h3{
+.no-results h3 {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
   line-height: 20px;
 }
-.no-results p{
+.no-results p {
   font-size: 12px;
   text-align: center;
 }
-.icon{
-text-align: center;
-margin-top: 40px;
-margin-bottom: 17px;
+.icon {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 17px;
 }

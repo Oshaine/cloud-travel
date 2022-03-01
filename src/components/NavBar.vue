@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav-bar">
     <v-app-bar color="#fff">
       <v-toolbar-title>
         <a href="/">
