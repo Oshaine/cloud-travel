@@ -2,7 +2,7 @@
   <v-row>
     <v-col cols="12" md="3">
       <div class="map">
-        <img src="../assets/images/map-bg.jpeg" alt="" />
+        <img src="../assets/images/map-bg.jpeg" alt="map" v-if="loading" />
         <div class="btn-wrapper">
           <v-btn>Show on map</v-btn>
         </div>
@@ -47,6 +47,10 @@ export default {
     items: {
       type: Number,
       default: 0,
+      required: true,
+    },
+    loading: {
+      type: Boolean,
       required: true,
     },
   },

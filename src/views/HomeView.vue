@@ -2,7 +2,7 @@
   <div>
     <search-bar :load="load" />
     <div class="filter-wrapper">
-      <search-filter :items="outlets.length" />
+      <search-filter :items="outlets.length" :loading="!loading" />
     </div>
     <div class="main-wrap">
       <v-row>
@@ -15,106 +15,123 @@
             <placeholder-loading :loading="loading" />
             <div v-if="outlets !== null && outlets.length >= 1">
               <v-card min-height="230" v-for="item in outlets" :key="item.id">
-                <v-row>
-                  <v-col cols="12" md="3">
-                    <v-img :src="item.property.heroImage.url"></v-img>
-                    <div class="d-flex justify-start">
-                      <v-img
-                        max-width="25%"
-                        max-height="25%"
-                        v-for="(i, x) in ''"
-                        :key="x"
-                        :src="i.url"
-                      >
-                      </v-img>
-                    </div>
-                  </v-col>
-                  <v-col cols="12" md="7">
-                    <v-card-title
-                      ><h3>{{ item.property.name }}</h3>
+                <v-hover v-slot="{ hover }">
+                  <v-row>
+                    <v-col cols="12" md="3">
+                      <v-img :src="item.property.heroImage.url"></v-img>
+                      <div class="d-flex justify-start">
+                        <v-img
+                          max-width="25%"
+                          max-height="25%"
+                          v-for="(i, x) in ''"
+                          :key="x"
+                          :src="i.url"
+                        >
+                        </v-img>
+                      </div>
+                    </v-col>
+                    <v-col cols="12" md="7">
+                      <v-card-title
+                        ><h3>{{ item.property.name }}</h3>
 
-                      <star-rating
-                        :rating="item.property.starRating"
-                        :length="item.property.starRating"
-                      />
-                    </v-card-title>
-                    <p class="address">
-                      {{ item.property.location.address }},
-                      {{ item.property.location.city }},
-                      {{ item.property.location.country }},
-                      {{ item.property.location.postalCode }} (view map)
-                    </p>
-                    <p
-                      class="over-view"
-                      v-for="(summary, index) in item.property.reviews"
-                      :key="index"
-                    >
-                      {{ summary.text }}
-                    </p>
-                    <v-card-text>
-                      <v-btn
-                        class="menu-btn"
-                        outlined
-                        color="#00A1E5"
-                        small
-                        v-for="(item, index) in policies.slice(0, 3)"
+                        <star-rating
+                          :rating="item.property.starRating"
+                          :length="item.property.starRating"
+                        />
+                      </v-card-title>
+                      <p class="address">
+                        {{ item.property.location.address }},
+                        {{ item.property.location.city }},
+                        {{ item.property.location.country }},
+                        {{ item.property.location.postalCode }} (view map)
+                      </p>
+                      <p
+                        class="over-view"
+                        v-for="(summary, index) in item.property.reviews"
                         :key="index"
                       >
-                        {{ item }}
-                      </v-btn>
+                        {{ summary.text }}
+                      </p>
+                      <v-card-text>
+                        <v-btn
+                          class="menu-btn"
+                          outlined
+                          color="#00A1E5"
+                          small
+                          v-for="(item, index) in policies.slice(0, 3)"
+                          :key="index"
+                        >
+                          {{ item }}
+                        </v-btn>
 
-                      <v-tooltip bottom color="#333333" max-width="246px">
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-btn
-                            class="menu-btn"
-                            v-bind="attrs"
-                            v-on="on"
-                            outlined
-                            color="#00A1E5"
-                            small
-                          >
-                            +1
-                          </v-btn>
-                        </template>
-                        <v-row>
-                          <v-col
-                            cols="6"
-                            v-for="(item, index) in policies"
-                            :key="index"
-                          >
-                            <p>
-                              <v-icon color="#019501">mdi-check</v-icon
-                              >{{ item }}
-                            </p>
-                          </v-col>
-                        </v-row>
-                      </v-tooltip>
-                    </v-card-text>
+                        <v-tooltip bottom color="#333333" max-width="346px">
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                              class="menu-btn"
+                              v-bind="attrs"
+                              v-on="on"
+                              outlined
+                              color="#00A1E5"
+                              small
+                            >
+                              +1
+                            </v-btn>
+                          </template>
+                          <v-row>
+                            <v-col
+                              cols="6"
+                              v-for="(item, index) in policies"
+                              :key="index"
+                            >
+                              <p>
+                                <v-icon color="#019501">mdi-check</v-icon
+                                >{{ item }}
+                              </p>
+                            </v-col>
+                          </v-row>
+                        </v-tooltip>
+                      </v-card-text>
 
-                    <p class="statusCode">
-                      <v-icon color="#002D63">mdi-shield-cross</v-icon
-                      >summary.covidSafety
-                    </p>
-                  </v-col>
-                  <v-col cols="12" md="2">
-                    <v-img
-                      max-width="146"
-                      max-height="50.5"
-                      src="../assets/images/TY-score-widget-transparent.png"
-                      class="rating"
-                    ></v-img>
-                    <div class="price">
-                      <v-btn color="#00A1E5" small>SAVE 16% TODAY! </v-btn>
-                      <p class="nightly-avg">Nightly av.</p>
-                      <div class="d-flex">
-                        <p class="original-price">SGD 120</p>
-                        <h2>SGD 100</h2>
+                      <p class="statusCode">
+                        <v-icon color="#002D63">mdi-shield-cross</v-icon
+                        >{{ item.property.covidSafety }}
+                      </p>
+                    </v-col>
+                    <v-col cols="12" md="2">
+                      <v-img
+                        max-width="146"
+                        max-height="50.5"
+                        src="../assets/images/TY-score-widget-transparent.png"
+                        class="rating"
+                      ></v-img>
+                      <div
+                        class="price"
+                        v-for="(price, index) in item.packages"
+                        :key="index"
+                      >
+                        <v-btn
+                          v-if="hover"
+                          class="transition-fast-in-fast-out"
+                          color="#00A1E5"
+                          small
+                          >SAVE 16% TODAY!
+                        </v-btn>
+                        <p class="nightly-avg">Nightly av.</p>
+                        <div class="d-flex">
+                          <p class="original-price" v-if="hover">
+                            {{ price.displayRate.currency }}
+                            {{ price.displayRate.value }}
+                          </p>
+                          <h2>
+                            {{ price.adjustedDisplayRate.currency }}
+                            {{ price.adjustedDisplayRate.value }}
+                          </h2>
+                        </div>
                       </div>
-                    </div>
 
-                    <v-card-text> </v-card-text>
-                  </v-col>
-                </v-row>
+                      <v-card-text> </v-card-text>
+                    </v-col> </v-row
+                ></v-hover>
               </v-card>
             </div>
             <div class="no-results" v-else v-show="!loading">
@@ -205,12 +222,15 @@ export default {
         if (res.status === 200) {
           this.outlets = res.data.outlets.availability.results;
           this.statusCode = res.status;
+          this.loading = false;
         }
       } catch (error) {
         console.error(error.response);
         this.statusCode = error.response.status;
+        this.loading = false;
       }
-      this.loading = false;
+
+      console.log(this.outlets);
       // this.getGallery();
     },
     getGallery() {

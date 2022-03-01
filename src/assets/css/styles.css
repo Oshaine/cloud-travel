@@ -2,6 +2,7 @@
 :root {
   --primary-color: #002d63;
   --secondary-color: #00a1e5;
+  --light-grey: #F5F5F5;
 }
 html,
 body {
@@ -12,6 +13,7 @@ body {
 }
 main {
   /* padding: 0 !important; */
+  background-color: var(--light-grey);
 }
 /* Navbar */
 .v-btn__content{
@@ -103,11 +105,14 @@ main {
   height: 44px !important;
   text-transform: none !important;
   flex: 1 1 17%;
+  background-color: #ffffff !important;
 }
 
-.filter-btns a .active {
+
+.v-btn--active {
   /* color: #ffff !important; */
-  background: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
 }
 .map {
   position: relative;
@@ -253,16 +258,18 @@ main {
   bottom: 0;
   padding: 0px 17px 17px 0px;
   right: 0px;
+  float: right;
 }
 .properties .price .v-btn {
   color: #fff;
   border-radius: 0;
+  text-align:right;
 }
 
 .properties .price h2 {
   font-size: 24px;
   font-weight: 700;
-  text-align: right;
+  text-align: left;
   line-height: 30.12px;
 }
 .properties .price .nightly-avg{
