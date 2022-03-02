@@ -51,7 +51,6 @@ export default {
   },
   created() {
     this.autoSuggest();
-    console.log(this.select.label);
   },
   methods: {
     async autoSuggest() {
@@ -60,7 +59,6 @@ export default {
       );
       this.options = res.data;
       console.log(this.options);
-      this.getGallery();
     },
     change() {
       this.$store.commit("SET_SEARCH", this.select.cityCode);

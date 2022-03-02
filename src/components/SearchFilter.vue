@@ -10,8 +10,9 @@
     </v-col>
     <v-col cols="12" md="9">
       <div class="filters">
+        <v-select :items="list" label="Select One" dark dense solo></v-select>
         <h3>Singapore: {{ items }} properties found</h3>
-        <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap large-fliter-list">
           <v-btn link to="/" class="filter-btns" elevation="0">
             Popularity
           </v-btn>
@@ -57,6 +58,13 @@ export default {
   data() {
     return {
       priceFilter: ["lowest first", "highest first"],
+      list: [
+        "Popularity",
+        "Price (lowest first)",
+        "Price (highest first)",
+        "Reviews",
+        "Discount",
+      ],
     };
   },
 };

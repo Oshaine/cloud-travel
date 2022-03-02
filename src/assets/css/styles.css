@@ -49,7 +49,7 @@ main {
   left: 0;
   right: 0;
 }
-.date-picker {
+.search-bar .date-picker {
   background-color: #ffff;
   min-width: 250px;
   height: 50px;
@@ -59,7 +59,7 @@ main {
   margin-left: 20px;
   position: relative;
 }
-.date-picker p {
+.search-bar .date-picker p {
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
@@ -67,10 +67,10 @@ main {
   position: relative;
   top: 5px;
 }
-.date-picker .night {
+.search-bar .date-picker .night {
   margin-left: 30px;
 }
-.date-picker .v-icon {
+.search-bar .date-picker .v-icon {
   font-size: 20px;
 }
 .search-btn {
@@ -94,6 +94,14 @@ main {
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 30px;
+}
+.filters .v-input__slot{
+  display: none;
+  background-color: var(--primary-color) !important;
+  color: #ffff !important;
+}
+.filters .v-select__selection{
+ font-size: 14px;
 }
 .v-menu__content .filter-btns{
   min-width: 226px !important;
@@ -216,7 +224,15 @@ main {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
   transition: 0.3s;
 }
+.properties .hero-image{
+width:250px;
+height:160px;
+}
 
+.properties .thumbnail{
+  width:48px;
+  height:48px;
+  }
 .properties .v-card__title {
   padding: 0;
   margin-top: 17px;
@@ -246,8 +262,17 @@ main {
   line-height: 16px;
   text-align: left;
 }
+.properties .v-card__text{
+  padding: 20px 0 0 0 !important;
+}
+.properties .review-rating{
+  /* margin-top: 0; */
+  font-size: 14px;
+  display: none;
+}
 .properties .menu-btn {
   margin-right: 5px;
+  margin-bottom: 5px;
   position: relative;
   top: -20px;
 }
@@ -313,4 +338,108 @@ main {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 17px;
+}
+
+/* Mobile Search Bar */
+.mobile-search .v-card {
+  padding-bottom: 5px;
+}
+.mobile-search .v-btn__content {
+  text-transform: none !important;
+}
+.mobile-search .v-icon {
+  padding: 10px;
+}
+
+.mobile-search .location {
+  font-size: 14px;
+  font-weight: 700;
+}
+.mobile-search .date {
+  position: absolute;
+  font-size: 10px;
+  left: 45px;
+  top: 25px;
+}
+.mobile-search .persons {
+  position: absolute;
+  font-size: 10px;
+  margin-left: 20px;
+  left: 105px;
+  top: 25px;
+}
+.v-toolbar__title {
+  font-size: 16px !important;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+.v-btn__content .mdi-close {
+  color: var(--primary-color) !important;
+}
+.filter-items .v-input__slot {
+  margin-top: 10px !important;
+  height: 40px !important;
+}
+.filters .v-input__slot{
+  display: initial;
+  background-color: var(--primary-color) !important;
+  color: #ffff !important;
+}
+.filter-items .date-picker {
+  background-color: #ffff;
+  min-width: 380px;
+  height: 40px;
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.filter-items .date-picker p {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  position: relative;
+}
+.filter-items .date-picker .night {
+  position: absolute;
+  right: 0;
+}
+.filter-items .date-picker .v-icon {
+  font-size: 20px;
+}
+.filter-items .search-btn {
+  min-width: 180px !important;
+  height: 40px !important;
+  margin-left: 0px;
+  background-color: var(--secondary-color) !important;
+  color: #ffff !important;
+  position: relative;
+  /* top: -5px; */
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 600px) {
+.menu-btn{
+  display: none;
+}
+.properties .v-rating{
+  margin-left: -10px;
+}
+.properties .review-rating{
+  display:  inline;
+}
+.search-bar, .map, .left-filter, .filters .large-fliter-list{
+  display: none !important;
+}
+.filters h3{
+  margin-bottom: 0;
+}
+.filters .v-select{
+  margin-top: -20px !important;
+}
+.filters h3{
+  margin-top: -10px !important;
+}
 }
