@@ -171,7 +171,7 @@
   </div>
 </template>
 <script>
-import StarRating from "@/components/StarRating.vue";
+import StarRating from "@/components/Shared/StarRating.vue";
 import PlaceholderLoading from "@/components/PlaceholderLoading.vue";
 
 export default {

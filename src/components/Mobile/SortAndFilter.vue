@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import LeftFliter from "./LeftFliter.vue";
+import LeftFliter from "@/components/Shared/LeftFliter.vue";
 export default {
   components: { LeftFliter },
   name: "SortAndFilter",

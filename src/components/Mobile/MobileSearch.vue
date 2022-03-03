@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import ComboBox from "./ComboBox.vue";
-import SearchButton from "./SearchButton.vue";
+import ComboBox from "@/components/Shared/ComboBox.vue";
+import SearchButton from "@/components/Shared/SearchButton.vue";
 export default {
   components: { ComboBox, SearchButton },
   name: "MobileSearch",

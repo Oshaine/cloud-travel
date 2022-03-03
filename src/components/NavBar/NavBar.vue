@@ -5,7 +5,7 @@
         <a href="/">
           <img
             class="ml-5"
-            src="../assets/images/cloudtravel-logo.jpg"
+            src="../../assets/images/cloudtravel-logo.jpg"
             alt="Logo"
             width="170"
           />
@@ -32,7 +32,7 @@
           <v-list-item>
             <img
               class="mt-2"
-              src="../assets/images/cloudtravel-logo.jpg"
+              src="../../assets/images/cloudtravel-logo.jpg"
               alt="Logo"
               width="150"
             />

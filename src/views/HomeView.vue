@@ -67,12 +67,12 @@
 </template>
 
 <script>
-import LeftFliter from "@/components/LeftFliter.vue";
+import LeftFliter from "@/components/Shared/LeftFliter.vue";
 import SearchFilter from "@/components/SearchFilter.vue";
-import SearchBar from "@/components/SearchBar.vue";
+import SearchBar from "@/components/SearchBar/SearchBar.vue";
 import PropertyCard from "@/components/PropertyCard.vue";
-import MobileSearch from "@/components/MobileSearch.vue";
-import SortAndFilter from "@/components/SortAndFilter.vue";
+import MobileSearch from "@/components/Mobile/MobileSearch.vue";
+import SortAndFilter from "@/components/Mobile/SortAndFilter.vue";
 // @ is an alias to /src
 
 export default {

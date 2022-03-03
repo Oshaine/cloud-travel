@@ -125,7 +125,7 @@
 </template>
 <script>
 import CheckBoxFilter from "./CheckBoxFilter.vue";
-import StarRating from "./Shared/StarRating.vue";
+import StarRating from "@/components/Shared/StarRating.vue";
 export default {
   components: { CheckBoxFilter, StarRating },
   name: "LeftFilter",
