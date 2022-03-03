@@ -1,23 +1,9 @@
 <template>
-  <div class="search-bar">
+  <div @scroll="stickyTop" class="search-bar" ref="searchBar">
     <div class="search-wrapper">
       <div class="d-flex flex-wrap align-items-center justify-content-center">
         <div class="search-box">
-          <v-combobox
-            class="pa-0"
-            v-model="select"
-            :items="options"
-            item-text="label"
-            item-value="cityCode"
-            solo
-            prepend-inner-icon="mdi-magnify"
-            append-icon=""
-          >
-            <template slot="item" slot-scope="data">
-              <v-icon>mdi-map-marker-outline</v-icon>
-              <span>{{ data.item.label }}</span>
-            </template>
-          </v-combobox>
+          <combo-box styleType="solo" />
         </div>
         <div class="date-picker">
           <div class="d-flex">
@@ -29,14 +15,17 @@
         <div class="date-picker">
           <p>2 adults, 0 children, 1 room</p>
         </div>
-        <v-btn @click="change" class="search-btn">Search</v-btn>
+        <search-button :search="search" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ComboBox from "./ComboBox.vue";
+import SearchButton from "./SearchButton.vue";
 export default {
+  components: { ComboBox, SearchButton },
   name: "SearchBar",
   props: {
     load: {
@@ -44,25 +33,24 @@ export default {
     },
   },
   data() {
-    return {
-      select: "",
-      options: [],
-    };
+    return {};
   },
-  created() {
-    this.autoSuggest();
+  created() {},
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("scroll", this.stickyTop);
+    });
   },
   methods: {
-    async autoSuggest() {
-      let res = await this.$axios.get(
-        "http://localhost:8080/job01/autosuggest"
-      );
-      this.options = res.data;
-      console.log(this.options);
+    // set search bar sticky
+    stickyTop() {
+      const searchBar = this.$refs.searchBar;
+      const sticky = searchBar.offsetTop;
+      window.pageYOffset > sticky
+        ? searchBar.classList.add("sticky")
+        : searchBar.classList.remove("sticky");
     },
-    change() {
-      this.$store.commit("SET_SEARCH", this.select.cityCode);
-      console.log(this.$store.state.search);
+    search() {
       this.load();
     },
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="left-filter">
+  <div :class="`left-filter ${customClass}`">
     <v-sheet class="filter-container" rounded="lg" min-height="142px">
       <v-card class="per-night" flat color="transparent">
         <v-subheader
@@ -129,6 +129,11 @@ import StarRating from "./StarRating.vue";
 export default {
   components: { CheckBoxFilter, StarRating },
   name: "LeftFilter",
+  props: {
+    customClass: {
+      type: String,
+    },
+  },
   data() {
     return {
       min: 0,

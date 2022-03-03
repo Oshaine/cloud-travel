@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mobile-search-dialog">
     <v-dialog
       v-model="dialog"
       fullscreen
@@ -31,22 +31,7 @@
 
         <v-list class="filter-items">
           <v-list-item>
-            <v-combobox
-              class="pa-0"
-              v-model="select"
-              :items="options"
-              item-text="label"
-              item-value="cityCode"
-              outlined
-              dense
-              prepend-inner-icon="mdi-magnify"
-              append-icon=""
-            >
-              <template slot="item" slot-scope="data">
-                <v-icon>mdi-map-marker-outline</v-icon>
-                <span>{{ data.item.label }}</span>
-              </template>
-            </v-combobox>
+            <combo-box styleType="outlined" />
           </v-list-item>
           <v-list-item>
             <div class="date-picker">
@@ -62,7 +47,7 @@
             </div>
           </v-list-item>
           <v-list-item>
-            <v-btn @click="change" class="search-btn">Search</v-btn>
+            <search-button :search="search" />
           </v-list-item>
         </v-list>
       </v-card>
@@ -71,7 +56,10 @@
 </template>
 
 <script>
+import ComboBox from "./ComboBox.vue";
+import SearchButton from "./SearchButton.vue";
 export default {
+  components: { ComboBox, SearchButton },
   name: "MobileSearch",
   props: {
     load: {
@@ -85,20 +73,9 @@ export default {
       dialog: false,
     };
   },
-  created() {
-    this.autoSuggest();
-  },
+
   methods: {
-    async autoSuggest() {
-      let res = await this.$axios.get(
-        "http://localhost:8080/job01/autosuggest"
-      );
-      this.options = res.data;
-      console.log(this.options);
-    },
-    change() {
-      this.$store.commit("SET_SEARCH", this.select.cityCode);
-      console.log(this.$store.state.search);
+    search() {
       this.load();
       this.dialog = false;
     },
