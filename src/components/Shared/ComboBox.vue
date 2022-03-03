@@ -19,6 +19,7 @@
   </v-combobox>
 </template>
 <script>
+import Api from "../../test";
 export default {
   name: "ComboBox",
   props: {
@@ -42,7 +43,7 @@ export default {
   },
   methods: {
     async autoSuggest() {
-      let res = await this.$axios.get(`job01/autosuggest`);
+      let res = await Api.get(`job01/autosuggest`);
       this.options = res.data;
     },
     change() {

@@ -43,6 +43,7 @@
 
 <script>
 import LeftFliter from "@/components/Shared/LeftFliter.vue";
+import Api from "../../test";
 export default {
   components: { LeftFliter },
   name: "SortAndFilter",
@@ -65,8 +66,8 @@ export default {
       ],
       url:
         process.env.NODE_ENV === "production"
-          ? process.env.BASE_URL_PROD
-          : process.env.BASE_URL_DEV,
+          ? process.env.VUE_APP_BASE_URL_PROD
+          : process.env.VUE_APP_BASE_URL_DEV,
     };
   },
   created() {
@@ -74,7 +75,7 @@ export default {
   },
   methods: {
     async autoSuggest() {
-      let res = await this.$axios.get(`job01/autosuggest`);
+      let res = await Api.get(`job01/autosuggest`);
       this.options = res.data;
     },
     // set search code in store to reuse in other components

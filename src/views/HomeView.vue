@@ -73,6 +73,7 @@ import SearchBar from "@/components/SearchBar/SearchBar.vue";
 import PropertyCard from "@/components/PropertyCard.vue";
 import MobileSearch from "@/components/Mobile/MobileSearch.vue";
 import SortAndFilter from "@/components/Mobile/SortAndFilter.vue";
+import Api from "../test";
 // @ is an alias to /src
 
 export default {
@@ -95,8 +96,8 @@ export default {
       statusCode: 0,
       url:
         process.env.NODE_ENV === "production"
-          ? process.env.BASE_URL_PROD
-          : process.env.BASE_URL_DEV,
+          ? process.env.VUE_APP_BASE_URL_PROD
+          : process.env.VUE_APP_BASE_URL_DEV,
     };
   },
   computed: {
@@ -119,7 +120,7 @@ export default {
       var search =
         this.$store.state.search !== null ? this.$store.state.search : "sgsg";
       try {
-        const res = await this.$axios.get(`job01/search/${search}`);
+        const res = await Api.get(`job01/search/${search}`);
         if (res.status === 200) {
           this.outlets = res.data.outlets.availability.results;
           // set status code to show appropriate message where needed
