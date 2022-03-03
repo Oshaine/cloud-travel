@@ -119,7 +119,7 @@ export default {
       var search =
         this.$store.state.search !== null ? this.$store.state.search : "sgsg";
       try {
-        const res = await this.$axios.get(`${this.url}/job01/search/${search}`);
+        const res = await this.$axios.get(`job01/search/${search}`);
         if (res.status === 200) {
           this.outlets = res.data.outlets.availability.results;
           // set status code to show appropriate message where needed

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async autoSuggest() {
-      let res = await this.$axios.get(`${this.url}/job01/autosuggest`);
+      let res = await this.$axios.get(`job01/autosuggest`);
       this.options = res.data;
     },
     change() {
