@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import store from "./store";
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 // Vue.config.globalProperties.$axios = axios;
 Vue.prototype.$axios = axios;
 new Vue({

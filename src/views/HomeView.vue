@@ -93,6 +93,10 @@ export default {
       loading: false,
       showMap: false,
       statusCode: 0,
+      url:
+        process.env.NODE_ENV === "production"
+          ? process.env.BASE_URL_PROD
+          : process.env.BASE_URL_DEV,
     };
   },
   computed: {
@@ -105,6 +109,7 @@ export default {
   },
   mounted() {
     this.load();
+    console.log(process.env);
   },
   methods: {
     async load() {
@@ -114,9 +119,7 @@ export default {
       var search =
         this.$store.state.search !== null ? this.$store.state.search : "sgsg";
       try {
-        const res = await this.$axios.get(
-          `http://localhost:8080/job01/search/${search}`
-        );
+        const res = await this.$axios.get(`${this.url}/job01/search/${search}`);
         if (res.status === 200) {
           this.outlets = res.data.outlets.availability.results;
           // set status code to show appropriate message where needed

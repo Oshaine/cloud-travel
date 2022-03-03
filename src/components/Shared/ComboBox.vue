@@ -31,6 +31,10 @@ export default {
     return {
       select: "",
       options: [],
+      url:
+        process.env.NODE_ENV === "production"
+          ? process.env.BASE_URL_PROD
+          : process.env.BASE_URL_DEV,
     };
   },
   created() {
@@ -38,9 +42,7 @@ export default {
   },
   methods: {
     async autoSuggest() {
-      let res = await this.$axios.get(
-        "http://localhost:8080/job01/autosuggest"
-      );
+      let res = await this.$axios.get(`${this.url}/job01/autosuggest`);
       this.options = res.data;
     },
     change() {
