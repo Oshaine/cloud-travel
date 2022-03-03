@@ -110,7 +110,6 @@ export default {
   },
   mounted() {
     this.load();
-    console.log(process.env);
   },
   methods: {
     async load() {
