@@ -38,6 +38,7 @@ export default {
           : process.env.BASE_URL_DEV,
     };
   },
+
   created() {
     this.autoSuggest();
   },
